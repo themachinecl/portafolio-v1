@@ -1,11 +1,179 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const skills = [
+  'Angular',
+  'React',
+  'TypeScript',
+  'NgRx',
+  'RxJS',
+  'Microfrontends',
+  'Webpack Module Federation',
+  'AWS',
+  'Azure',
+  'Docker',
+  'Kubernetes',
+  'NestJS',
+];
+
+const campaigns = ['Stefanini', 'NTT Data', 'Itaú', 'Banco de Chile', 'Clínica Alemana', 'ChileCompra'];
+
+const projects = [
+  {
+    title: 'Federated Frontend Platforms',
+    text: 'Enterprise microfrontend architecture for independent delivery, shared standards, and maintainable product evolution.',
+  },
+  {
+    title: 'State Management Modernization',
+    text: 'Type-safe Angular and React applications using NgRx, RxJS, and disciplined frontend domain modeling.',
+  },
+  {
+    title: 'Cloud-Ready Delivery Systems',
+    text: 'Containerized frontend and API workflows aligned with AWS, Azure, Docker, Kubernetes, and NestJS ecosystems.',
+  },
+];
+
+const certifications = [
+  'Frontend architecture and technical leadership',
+  'Cloud, containers, and enterprise delivery',
+  'Advanced TypeScript application engineering',
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout>
+  <div class="site-shell">
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Juan Paulo Rubilar Fontt home">
+          <span class="brand__name">Juan Paulo Rubilar Fontt</span>
+          <span class="brand__role">Senior Frontend Engineer</span>
+        </a>
+        <div class="nav__links" aria-label="Section links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Campaigns</a>
+          <a href="#projects">Conquests</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <div id="top"></div>
+      <Hero />
+
+      <section class="section section--tight" id="about" aria-labelledby="about-title">
+        <p class="section__eyebrow">About Me</p>
+        <h2 class="section__title" id="about-title">Engineering leadership with strategic execution.</h2>
+        <div class="grid grid--two">
+          <div class="about-copy">
+            <p>
+              I am a Senior Frontend Engineer and Technical Lead focused on building reliable,
+              scalable interfaces for business-critical platforms. My work connects frontend
+              architecture, team enablement, and delivery discipline.
+            </p>
+            <p>
+              Across banking, healthcare, procurement, and technology services, I have helped teams
+              move from fragmented interfaces to cohesive systems that can evolve without losing
+              quality or speed.
+            </p>
+          </div>
+          <div class="panel">
+            <div class="panel__content">
+              <ul class="stat-list" aria-label="Profile highlights">
+                <li><strong>12</strong><span>Technologies mastered</span></li>
+                <li><strong>6</strong><span>Enterprise campaigns</span></li>
+                <li><strong>3</strong><span>Core platform disciplines</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="skills" aria-labelledby="skills-title">
+        <p class="section__eyebrow">Technologies Mastered</p>
+        <h2 class="section__title" id="skills-title">A modern frontend arsenal for enterprise platforms.</h2>
+        <p class="section__lead">
+          Deep practical experience across frontend frameworks, reactive state, distributed UI
+          architecture, cloud delivery, and backend collaboration.
+        </p>
+        <div class="skill-cloud" aria-label="Technology skills">
+          {skills.map((skill) => <span class="skill-chip">{skill}</span>)}
+        </div>
+      </section>
+
+      <section class="section" id="experience" aria-labelledby="experience-title">
+        <p class="section__eyebrow">Campaigns</p>
+        <h2 class="section__title" id="experience-title">Enterprise experience across demanding domains.</h2>
+        <div class="timeline">
+          {campaigns.map((campaign) => (
+            <article class="panel campaign-card">
+              <div class="panel__content">
+                <span class="meta">Campaign</span>
+                <h3>{campaign}</h3>
+                <p>
+                  Frontend engineering, architecture collaboration, and technical delivery for
+                  complex digital products and enterprise ecosystems.
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section" id="projects" aria-labelledby="projects-title">
+        <p class="section__eyebrow">Conquests</p>
+        <h2 class="section__title" id="projects-title">Selected platform outcomes and technical victories.</h2>
+        <div class="grid grid--three card-list">
+          {projects.map((project) => (
+            <article class="panel conquest-card">
+              <div class="panel__content">
+                <span class="meta">Conquest</span>
+                <h3>{project.title}</h3>
+                <p>{project.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section" id="certifications" aria-labelledby="certifications-title">
+        <p class="section__eyebrow">Certifications</p>
+        <h2 class="section__title" id="certifications-title">Continual refinement of craft and command.</h2>
+        <div class="grid grid--three card-list">
+          {certifications.map((certification) => (
+            <article class="panel certification-card">
+              <div class="panel__content">
+                <span class="meta">Credential Area</span>
+                <h3>{certification}</h3>
+                <p>Focused professional development aligned with senior engineering practice.</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="panel contact-panel">
+          <div class="panel__content">
+            <p class="section__eyebrow">Alliance Request</p>
+            <h2 class="section__title" id="contact-title">Let us discuss the next frontend campaign.</h2>
+            <p class="section__lead">
+              Available for senior frontend engineering, technical leadership, architecture,
+              modernization, and enterprise delivery conversations.
+            </p>
+          </div>
+          <div class="panel__content contact-actions">
+            <a class="button button--primary" href="mailto:juan.rubilar@example.com">Request Alliance</a>
+            <a class="button button--secondary" href="https://www.linkedin.com/" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Juan Paulo Rubilar Fontt - Senior Frontend Engineer / Technical Lead</p>
+    </footer>
+  </div>
+</MainLayout>
