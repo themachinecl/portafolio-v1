@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" color="#C9A227" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Watch tower">
+  <path d="M19 55h26"/>
+  <path d="M24 55l4-29h8l4 29"/>
+  <path d="M20 26h24"/>
+  <path d="M22 26v-9h5v4h4v-4h5v4h4v-4h5v9"/>
+  <path d="M28 36h8"/>
+  <path d="M26 44h12"/>
+  <path d="M29 26 24 55"/>
+  <path d="M35 26l5 29"/>
+  <path d="M32 12V7"/>
+  <path d="M32 7h10l-3 4 3 4H32"/>
+</svg>
