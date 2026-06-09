@@ -7,9 +7,11 @@ interface Props {
 }
 
 const {
-  title = 'Juan Paulo Rubilar Fontt | Senior Frontend Engineer',
-  description = 'Portfolio of Juan Paulo Rubilar Fontt, Senior Frontend Engineer and Technical Lead specializing in Angular, React, TypeScript, NgRx, RxJS, microfrontends, AWS, Azure, Docker, Kubernetes, and NestJS.',
+  title = 'Juan Paulo Rubilar Fontt | Architect of Digital Empires',
+  description = 'An imperial chronicle portfolio for Juan Paulo Rubilar Fontt, Senior Frontend Engineer and Technical Lead specializing in Angular, React, TypeScript, microfrontends, cloud platforms, and enterprise software architecture.',
 } = Astro.props;
+
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -20,13 +22,23 @@ const {
     <meta name="description" content={description} />
     <meta name="author" content="Juan Paulo Rubilar Fontt" />
     <meta name="theme-color" content="#111418" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="/images/medieval-city-bg.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/images/medieval-city-bg.webp" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
@@ -34,6 +46,15 @@ const {
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scene-backdrop js-bg-parallax" aria-hidden="true"></div>
+    <div class="atmosphere atmosphere--fog js-float-layer" aria-hidden="true"></div>
+    <div class="atmosphere atmosphere--dust js-particles" aria-hidden="true"></div>
+    <div class="atmosphere atmosphere--embers js-embers" aria-hidden="true"></div>
+    <div class="atmosphere atmosphere--rays js-float-layer" aria-hidden="true"></div>
+    <div class="page-vignette" aria-hidden="true"></div>
     <slot />
+    <script>
+      import '../scripts/scrollAnimations';
+    </script>
   </body>
 </html>

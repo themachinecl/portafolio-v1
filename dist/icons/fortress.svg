@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" color="#C9A227" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Fortress">
+  <path d="M11 55h42"/>
+  <path d="M15 55V22h10v33"/>
+  <path d="M39 55V22h10v33"/>
+  <path d="M23 30h18v25H23z"/>
+  <path d="M14 22v-8h6v4h5v-4h6v8"/>
+  <path d="M38 22v-8h6v4h5v-4h6v8"/>
+  <path d="M24 30v-8h6v4h4v-4h6v8"/>
+  <path d="M29 55V43a3 3 0 0 1 6 0v12"/>
+  <path d="M18 30h4"/>
+  <path d="M42 30h4"/>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" color="#C9A227" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Merchant network">
+  <circle cx="18" cy="21" r="6"/>
+  <circle cx="45" cy="17" r="5"/>
+  <circle cx="47" cy="44" r="7"/>
+  <circle cx="18" cy="46" r="5"/>
+  <path d="M24 20l16-3"/>
+  <path d="M44 22l2 15"/>
+  <path d="M40 44H23"/>
+  <path d="M21 27l23 13"/>
+  <path d="M18 15v-4"/>
+  <path d="M15 21h6"/>
+  <path d="M45 12v10"/>
+  <path d="M42 17h6"/>
+  <path d="M47 38v12"/>
+  <path d="M43 44h8"/>
+</svg>

@@ -1,191 +1,71 @@
 ---
-const technologies = ['Angular', 'React', 'TypeScript', 'NgRx', 'RxJS', 'Module Federation'];
+const primaryItems = [
+  { label: 'Chronicle', image: '/icons/royal-archive.svg' },
+  { label: 'Campaigns', image: '/icons/imperial-map.svg', badge: 'NEW' },
+  { label: 'Technologies', image: '/icons/engineering-workshop.svg' },
+  { label: 'Conquests', image: '/icons/castle.svg' },
+];
+
+const secondaryItems = ['Alliance', 'LinkedIn', 'GitHub', 'Email'];
 ---
 
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero__ornament" aria-hidden="true"></div>
-  <div class="hero__content">
-    <p class="hero__eyebrow">Imperial command center for frontend architecture</p>
-    <h1 id="hero-title">Juan Paulo Rubilar Fontt</h1>
-    <p class="hero__role">Senior Frontend Engineer / Technical Lead</p>
-    <p class="hero__summary">
-      I design and lead scalable frontend platforms for enterprise teams, combining modern
-      TypeScript architecture, resilient delivery practices, and product-minded engineering.
-    </p>
-    <div class="hero__actions" aria-label="Primary actions">
-      <a class="button button--primary" href="#contact">Alliance Request</a>
-      <a class="button button--secondary" href="#projects">View Conquests</a>
+<section class="menu-screen" aria-labelledby="menu-title">
+  <aside class="main-menu" aria-label="Main portfolio menu">
+    <a class="main-menu__logo" href="/" aria-label="Juan Paulo Rubilar Fontt home">
+      <img
+        src="/images/juan-paulo-logo.webp"
+        alt="Juan Paulo Rubilar Fontt - Architect of Digital Empires"
+        width="440"
+        height="225"
+        loading="eager"
+        decoding="async"
+      />
+    </a>
+
+    <nav class="menu-tiles" aria-label="Primary menu">
+      {primaryItems.map((item) => (
+        <a class="menu-tile" href="#">
+          {item.badge && <span class="menu-tile__badge">{item.badge}</span>}
+          <span class="menu-tile__art">
+            <img src={item.image} alt="" width="64" height="64" loading="eager" decoding="async" />
+          </span>
+          <span class="menu-tile__label">{item.label}</span>
+        </a>
+      ))}
+    </nav>
+
+    <div class="menu-divider" aria-hidden="true">
+      <span></span>
     </div>
-    <ul class="hero__tech" aria-label="Core technologies">
-      {technologies.map((technology) => <li>{technology}</li>)}
-    </ul>
-  </div>
-  <aside class="hero__command panel" aria-label="Professional profile summary">
-    <div class="panel__content">
-      <span class="meta">Strategic Profile</span>
-      <dl class="command-grid">
-        <div>
-          <dt>Focus</dt>
-          <dd>Frontend platforms</dd>
-        </div>
-        <div>
-          <dt>Leadership</dt>
-          <dd>Technical direction</dd>
-        </div>
-        <div>
-          <dt>Systems</dt>
-          <dd>Cloud and microfrontends</dd>
-        </div>
-      </dl>
-    </div>
+
+    <nav class="secondary-menu" aria-label="Secondary menu">
+      {secondaryItems.map((item) => (
+        <a class="menu-button" href="#">{item}</a>
+      ))}
+    </nav>
+
+    <a class="menu-button menu-button--wide" href="/Juan_Paulo_Rubilar_Fontt_CV_2026.pdf" download>
+      Download CV
+    </a>
   </aside>
+
+  <div class="top-hud" aria-label="Profile panel">
+    <div class="top-hud__icons" aria-hidden="true">
+      <span>⚙</span>
+      <span>✉</span>
+    </div>
+    <div class="top-hud__avatar">JP</div>
+    <div class="top-hud__identity">
+      <strong>JUAN PAULO RUBILAR FONTT</strong>
+      <span>Architect of Digital Empires</span>
+    </div>
+  </div>
+
+  <article class="campaign-banner" aria-labelledby="menu-title">
+    <p>Featured Campaign</p>
+    <h1 id="menu-title">Auto Allocation Japan</h1>
+    <span>Angular · NestJS · Azure · Microfrontends</span>
+  </article>
+
+  <p class="version-label">PORTFOLIO 2026 · SENIOR FRONTEND ENGINEER</p>
 </section>
-
-<style>
-  .hero {
-    position: relative;
-    width: var(--container);
-    min-height: calc(100svh - 72px);
-    margin: 0 auto;
-    padding: 62px 0 44px;
-    display: grid;
-    gap: 28px;
-    align-items: center;
-  }
-
-  .hero__ornament {
-    position: absolute;
-    inset: 24px -20px auto auto;
-    width: min(52vw, 420px);
-    aspect-ratio: 1;
-    border: 1px solid rgba(201, 162, 39, 0.2);
-    opacity: 0.6;
-    transform: rotate(45deg);
-  }
-
-  .hero__ornament::before,
-  .hero__ornament::after {
-    position: absolute;
-    inset: 18%;
-    border: 1px solid rgba(139, 111, 71, 0.25);
-    content: '';
-  }
-
-  .hero__ornament::after {
-    inset: 34%;
-    border-color: rgba(78, 110, 129, 0.32);
-  }
-
-  .hero__content,
-  .hero__command {
-    position: relative;
-  }
-
-  .hero__eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 16px;
-    color: var(--gold);
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-  }
-
-  .hero__eyebrow::before {
-    width: 28px;
-    height: 1px;
-    background: currentColor;
-    content: '';
-  }
-
-  .hero h1 {
-    max-width: 840px;
-    margin: 0;
-    color: var(--text);
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 15vw, 7.4rem);
-    line-height: 0.92;
-    letter-spacing: 0;
-  }
-
-  .hero__role {
-    margin: 20px 0 0;
-    color: var(--gold);
-    font-family: var(--font-display);
-    font-size: clamp(1.35rem, 6vw, 2.2rem);
-    line-height: 1.12;
-  }
-
-  .hero__summary {
-    max-width: 690px;
-    margin: 18px 0 0;
-    color: var(--muted);
-    font-size: clamp(1rem, 3.8vw, 1.2rem);
-  }
-
-  .hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 28px;
-  }
-
-  .hero__tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 28px 0 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .hero__tech li {
-    border: 1px solid rgba(245, 241, 232, 0.16);
-    border-radius: 999px;
-    background: rgba(47, 52, 63, 0.62);
-    color: var(--muted);
-    padding: 7px 11px;
-    font-size: 0.86rem;
-  }
-
-  .command-grid {
-    display: grid;
-    gap: 18px;
-    margin: 0;
-  }
-
-  .command-grid div {
-    border-bottom: 1px solid rgba(245, 241, 232, 0.1);
-    padding-bottom: 16px;
-  }
-
-  .command-grid div:last-child {
-    border-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .command-grid dt {
-    color: var(--muted);
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .command-grid dd {
-    margin: 4px 0 0;
-    color: var(--text);
-    font-family: var(--font-display);
-    font-size: 1.28rem;
-  }
-
-  @media (min-width: 900px) {
-    .hero {
-      grid-template-columns: minmax(0, 1fr) 340px;
-      gap: 46px;
-      padding: 86px 0 64px;
-    }
-  }
-</style>

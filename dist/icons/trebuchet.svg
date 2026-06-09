@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" color="#C9A227" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Trebuchet">
+  <path d="M8 52h48"/>
+  <path d="M15 52 33 14l18 38"/>
+  <path d="M22 37h22"/>
+  <path d="M26 52 36 31"/>
+  <path d="M33 14l19 8"/>
+  <path d="M52 22c3 1 5 4 4 7"/>
+  <path d="M17 52l4-9h23l4 9"/>
+  <circle cx="19" cy="52" r="4"/>
+  <circle cx="45" cy="52" r="4"/>
+  <path d="M45 19l-5 8"/>
+  <path d="M38 28h5"/>
+</svg>
