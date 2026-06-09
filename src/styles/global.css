@@ -667,17 +667,25 @@ svg {
 }
 
 @media (max-width: 820px) {
+  html,
+  body,
+  main {
+    height: 100dvh;
+    overflow: hidden;
+  }
+
   body {
     background-position: center;
   }
 
   .menu-screen {
-    height: 100vh;
-    max-height: 100vh;
-    min-height: 100vh;
-    padding: 12px;
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: 100dvh;
+    padding: 10px;
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto auto auto;
+    grid-template-rows: auto auto auto 1fr;
+    gap: 8px;
     overflow: hidden;
   }
 
@@ -692,25 +700,146 @@ svg {
   }
 
   .main-menu {
-    min-height: auto;
+    height: auto;
+    min-height: 0;
+    padding: 8px;
+    transform: none;
+    border: 1px solid rgba(201, 162, 39, 0.5);
+    box-shadow:
+      0 12px 28px rgba(0, 0, 0, 0.34),
+      inset 0 1px rgba(255, 230, 140, 0.16);
+  }
+
+  .main-menu__logo {
+    height: 62px;
+    max-width: 220px;
+    margin: 0 auto 7px;
+    overflow: hidden;
+  }
+
+  .main-menu__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, black 58%, transparent 100%);
   }
 
   .menu-tiles {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
   }
 
   .menu-tile {
     grid-template-columns: none;
-    grid-template-rows: 56px 28px;
-    min-height: 84px;
+    grid-template-rows: 42px 22px;
+    min-height: 64px;
+  }
+
+  .menu-tile:nth-child(1),
+  .menu-tile:nth-child(3),
+  .menu-tile:nth-child(4) {
+    grid-template-rows: 48px 22px;
+    min-height: 70px;
+  }
+
+  .menu-tile__label {
+    font-size: clamp(0.58rem, 2.4vw, 0.74rem);
+    letter-spacing: 0.02em;
+  }
+
+  .menu-divider {
+    display: none;
+  }
+
+  .secondary-menu {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 5px;
+    margin-top: 7px;
+  }
+
+  .menu-button {
+    min-height: 26px;
+    padding: 4px 5px;
+    font-size: clamp(0.58rem, 2.3vw, 0.7rem);
+    letter-spacing: 0.02em;
+  }
+
+  .top-hud {
+    grid-template-columns: 42px 1fr;
+  }
+
+  .top-hud__avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .top-hud__identity {
+    min-height: 42px;
+    padding: 5px 10px;
+  }
+
+  .top-hud__identity strong {
+    font-size: clamp(0.68rem, 2.6vw, 0.86rem);
+  }
+
+  .top-hud__identity span {
+    font-size: clamp(0.66rem, 2.3vw, 0.78rem);
+  }
+
+  .campaign-banner {
+    padding: 9px 11px 10px;
+  }
+
+  .campaign-banner h2 {
+    font-size: 1.08rem;
+  }
+
+  .campaign-banner ul {
+    gap: 5px;
+  }
+
+  .campaign-banner li {
+    padding: 3px 6px;
+    font-size: 0.66rem;
+  }
+
+  .command-area {
+    position: relative;
+    top: auto;
+    left: auto;
+    grid-column: 1;
+    grid-row: auto;
+    align-self: stretch;
+    width: 100%;
+    min-height: 0;
+    max-width: 100%;
+    transform: none;
   }
 
   .command-panel {
     position: relative;
     min-height: 0;
     max-height: 100%;
-    overflow: hidden;
-    padding: 22px;
+    overflow: auto;
+    padding: 18px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .command-panel h1,
+  .command-panel h2 {
+    font-size: clamp(1.35rem, 6vw, 2rem);
+  }
+
+  .panel-subtitle {
+    font-size: clamp(0.95rem, 4vw, 1.16rem);
+    margin-bottom: 10px;
+  }
+
+  .command-panel p {
+    font-size: 0.84rem;
+    line-height: 1.45;
   }
 
   .top-hud {
@@ -726,5 +855,23 @@ svg {
   .seal-grid,
   .achievement-grid {
     grid-template-columns: 1fr;
+  }
+
+  .achievement-grid,
+  .arsenal-grid,
+  .conquest-grid,
+  .seal-grid {
+    gap: 8px;
+  }
+
+  .arsenal-card,
+  .campaign-chapter,
+  .conquest-card,
+  .seal-card {
+    padding: 10px;
+  }
+
+  .version-label {
+    display: none;
   }
 }
