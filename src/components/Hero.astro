@@ -245,28 +245,68 @@ const seals = [
   const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-panel]')];
   const panels = [...document.querySelectorAll<HTMLElement>('[data-content-panel]')];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let activePanel = document.querySelector<HTMLElement>('[data-content-panel].is-active');
+  let transitionInProgress = false;
 
   const openPanel = (panelId: string) => {
+    const nextPanel = panels.find((panel) => panel.dataset.contentPanel === panelId);
+
+    if (!nextPanel || nextPanel === activePanel || transitionInProgress) {
+      return;
+    }
+
     buttons.forEach((button) => {
       const active = button.dataset.panel === panelId;
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-pressed', String(active));
     });
 
-    panels.forEach((panel) => {
-      const active = panel.dataset.contentPanel === panelId;
-      panel.hidden = !active;
-      panel.classList.toggle('is-active', active);
+    if (reduceMotion || !window.gsap) {
+      panels.forEach((panel) => {
+        const active = panel === nextPanel;
+        panel.hidden = !active;
+        panel.classList.toggle('is-active', active);
+      });
+      activePanel = nextPanel;
+      return;
+    }
 
-      if (active && !reduceMotion) {
-        panel.animate(
-          [
-            { opacity: 0, transform: 'translateY(12px) scale(0.985)' },
-            { opacity: 1, transform: 'translateY(0) scale(1)' },
-          ],
-          { duration: 260, easing: 'cubic-bezier(.2,.8,.2,1)' },
-        );
-      }
+    transitionInProgress = true;
+    const gsap = window.gsap;
+    const currentPanel = activePanel;
+
+    gsap.killTweensOf([currentPanel, nextPanel]);
+    nextPanel.hidden = false;
+    nextPanel.classList.add('is-active', 'is-entering');
+    gsap.set(nextPanel, { autoAlpha: 0, y: 18, scale: 0.98 });
+
+    gsap.to(currentPanel, {
+      autoAlpha: 0,
+      y: -8,
+      duration: 0.18,
+      ease: 'power2.out',
+      onComplete: () => {
+        if (currentPanel) {
+          currentPanel.hidden = true;
+          currentPanel.classList.remove('is-active');
+          gsap.set(currentPanel, { clearProps: 'all' });
+        }
+      },
+    });
+
+    gsap.to(nextPanel, {
+      autoAlpha: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.35,
+      ease: 'power2.out',
+      delay: 0.04,
+      onComplete: () => {
+        nextPanel.classList.remove('is-entering');
+        gsap.set(nextPanel, { clearProps: 'opacity,visibility,transform' });
+        activePanel = nextPanel;
+        transitionInProgress = false;
+      },
     });
   };
 

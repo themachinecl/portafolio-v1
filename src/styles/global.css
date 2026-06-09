@@ -137,8 +137,8 @@ svg {
 }
 
 .main-menu__logo img {
-  width: min(153px, 68%);
-  max-height: min(65px, 8.4vh);
+  width: min(186px, 80%);
+  max-height: min(72px, 8.8vh);
   object-fit: contain;
   filter:
     drop-shadow(0 12px 22px rgba(0, 0, 0, 0.54))
@@ -298,17 +298,22 @@ svg {
 }
 
 .command-area {
-  grid-column: 2;
-  grid-row: 1 / -1;
-  align-self: center;
-  width: min(620px, 100%);
-  justify-self: center;
-  transform: translateY(-40px);
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  z-index: 5;
+  width: 680px;
+  min-height: 430px;
+  max-width: calc(100vw - 790px);
+  transform: translateX(-50%);
 }
 
 .command-panel {
-  min-height: 0;
-  max-height: calc(100vh - 104px);
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  min-height: 430px;
+  max-height: calc(100vh - 190px);
   overflow: hidden;
   padding: 32px;
   border: 1px solid rgba(10, 7, 4, 0.96);
@@ -321,11 +326,20 @@ svg {
     0 24px 70px rgba(0, 0, 0, 0.52),
     inset 0 1px rgba(255, 235, 170, 0.16),
     inset 0 0 70px rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  will-change: opacity, transform, box-shadow;
 }
 
 .command-panel[hidden] {
   display: none;
+}
+
+.command-panel.is-entering {
+  box-shadow:
+    0 0 22px rgba(201, 162, 39, 0.2),
+    0 24px 70px rgba(0, 0, 0, 0.52),
+    inset 0 1px rgba(255, 235, 170, 0.2),
+    inset 0 0 70px rgba(0, 0, 0, 0.34);
 }
 
 .panel-kicker,
@@ -636,9 +650,15 @@ svg {
   }
 
   .command-area {
+    position: relative;
+    top: auto;
+    left: auto;
     grid-column: 2;
     grid-row: 2;
     align-self: start;
+    width: 100%;
+    max-width: 100%;
+    transform: none;
   }
 
   .version-label {
@@ -686,6 +706,7 @@ svg {
   }
 
   .command-panel {
+    position: relative;
     min-height: 0;
     max-height: 100%;
     overflow: hidden;

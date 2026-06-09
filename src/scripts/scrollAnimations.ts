@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 declare global {
   interface Window {
     __juanpauloScrollCleanup?: () => void;
+    gsap?: typeof gsap;
   }
 }
 
@@ -15,6 +16,7 @@ const initScrollAnimations = () => {
 
   window.__juanpauloScrollCleanup?.();
   gsap.registerPlugin(ScrollTrigger);
+  window.gsap = gsap;
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
