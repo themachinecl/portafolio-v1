@@ -1,12 +1,83 @@
 ---
-const primaryItems = [
-  { label: 'Chronicle', image: '/icons/royal-archive.svg' },
-  { label: 'Campaigns', image: '/icons/imperial-map.svg', badge: 'NEW' },
-  { label: 'Technologies', image: '/icons/engineering-workshop.svg' },
-  { label: 'Conquests', image: '/icons/castle.svg' },
+const menuItems = [
+  { id: 'chronicle', label: 'Chronicle', panel: '/images/panel_1.webp' },
+  { id: 'arsenal', label: 'Arsenal', panel: '/images/panel_2.webp' },
+  { id: 'campaigns', label: 'Campaigns', panel: '/images/panel_3.webp' },
+  { id: 'conquests', label: 'Conquests', panel: '/images/panel_4.webp' },
+  { id: 'seals', label: 'Seals', panel: '/images/panel_5.webp' },
+  { id: 'alliance', label: 'Alliance', panel: '/images/panel_6.webp' },
 ];
 
-const secondaryItems = ['Alliance', 'LinkedIn', 'GitHub', 'Email'];
+const arsenal = [
+  {
+    category: 'Frontend',
+    icon: '/icons/engineering-workshop.svg',
+    skills: ['Angular', 'React', 'TypeScript', 'NgRx', 'RxJS', 'Angular Material', 'Microfrontends', 'Module Federation'],
+  },
+  {
+    category: 'Backend',
+    icon: '/icons/gear.svg',
+    skills: ['Node.js', 'NestJS', 'Spring Boot', 'Python', 'GraphQL', 'REST APIs'],
+  },
+  {
+    category: 'Cloud',
+    icon: '/icons/watch-tower.svg',
+    skills: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'GitHub Actions', 'Jenkins'],
+  },
+  {
+    category: 'Testing',
+    icon: '/icons/battle-plan.svg',
+    skills: ['Jasmine', 'Karma', 'Jest', 'React Testing Library', 'Selenium', 'Protractor'],
+  },
+  {
+    category: 'Idiomas',
+    icon: '/icons/scroll.svg',
+    skills: ['Espanol Nativo', 'Ingles B2'],
+  },
+];
+
+const campaigns = [
+  {
+    chapter: 'Chapter I',
+    title: 'NTT DATA',
+    text: 'Enterprise delivery across banking, insurance and public-sector ecosystems with technical leadership and modern frontend architecture.',
+  },
+  {
+    chapter: 'Chapter II',
+    title: 'Kabeli',
+    text: 'Frontend leadership for allocation platforms, microfrontends and cloud-integrated enterprise products.',
+  },
+  {
+    chapter: 'Chapter III',
+    title: 'Epidata',
+    text: 'Engineering consultant work focused on scalable web applications, product delivery and integration quality.',
+  },
+  {
+    chapter: 'Chapter IV',
+    title: 'Stefanini',
+    text: 'Technical execution for banking and corporate systems with Angular, state management and team collaboration.',
+  },
+];
+
+const conquests = [
+  'Auto Allocation Japan',
+  'Decisiones Recurrentes',
+  'ChileCompra',
+  'Banco Itau',
+  'Banco de Chile',
+  'Clinica Alemana',
+];
+
+const seals = [
+  'Scrum Master Certified',
+  'Kanban Essentials',
+  'AWS Developer Training',
+  'Magister en Ingenieria Industrial',
+  'Ingeniero en Computacion',
+  'Diplomados en Innovacion',
+  'Gestion de Proyectos',
+  'Operaciones',
+];
 ---
 
 <section class="menu-screen" aria-labelledby="menu-title">
@@ -22,15 +93,20 @@ const secondaryItems = ['Alliance', 'LinkedIn', 'GitHub', 'Email'];
       />
     </a>
 
-    <nav class="menu-tiles" aria-label="Primary menu">
-      {primaryItems.map((item) => (
-        <a class="menu-tile" href="#">
-          {item.badge && <span class="menu-tile__badge">{item.badge}</span>}
+    <nav class="menu-tiles" aria-label="Professional menu">
+      {menuItems.map((item, index) => (
+        <button
+          class:list={['menu-tile', index === 0 && 'is-active']}
+          type="button"
+          data-panel={item.id}
+          aria-controls={`panel-${item.id}`}
+          aria-pressed={index === 0 ? 'true' : 'false'}
+        >
           <span class="menu-tile__art">
-            <img src={item.image} alt="" width="64" height="64" loading="eager" decoding="async" />
+            <img src={item.panel} alt="" width="768" height="341" loading="eager" decoding="async" />
           </span>
           <span class="menu-tile__label">{item.label}</span>
-        </a>
+        </button>
       ))}
     </nav>
 
@@ -38,34 +114,167 @@ const secondaryItems = ['Alliance', 'LinkedIn', 'GitHub', 'Email'];
       <span></span>
     </div>
 
-    <nav class="secondary-menu" aria-label="Secondary menu">
-      {secondaryItems.map((item) => (
-        <a class="menu-button" href="#">{item}</a>
-      ))}
+    <nav class="secondary-menu" aria-label="Alliance links">
+      <a class="menu-button" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="menu-button" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+      <a class="menu-button" href="mailto:contacto@juanpaulo.dev">Email</a>
+      <a class="menu-button" href="/Juan_Paulo_Rubilar_Fontt_CV_2026.pdf" download>CV</a>
     </nav>
-
-    <a class="menu-button menu-button--wide" href="/Juan_Paulo_Rubilar_Fontt_CV_2026.pdf" download>
-      Download CV
-    </a>
   </aside>
 
-  <div class="top-hud" aria-label="Profile panel">
+  <div class="command-area" aria-live="polite">
+    <article class="command-panel is-active" id="panel-chronicle" data-content-panel="chronicle">
+      <span class="panel-kicker">Chronicle</span>
+      <h1 id="menu-title">Juan Paulo Rubilar Fontt</h1>
+      <p class="panel-subtitle">Senior Software Engineer · Technical Lead · Angular & React Specialist</p>
+      <p>
+        13+ years of experience building enterprise software across banking, health, government, retail and logistics.
+        Experienced in architecture, technical leadership, frontend, backend, cloud platforms and collaboration with data
+        science teams.
+      </p>
+      <div class="achievement-grid" aria-label="Professional focus">
+        <span>Architecture</span>
+        <span>Technical Leadership</span>
+        <span>Frontend</span>
+        <span>Backend</span>
+        <span>Cloud</span>
+        <span>Data Science Collaboration</span>
+      </div>
+    </article>
+
+    <article class="command-panel" id="panel-arsenal" data-content-panel="arsenal" hidden>
+      <span class="panel-kicker">Arsenal</span>
+      <h2>Arsenal of Technologies</h2>
+      <div class="arsenal-grid">
+        {arsenal.map((group) => (
+          <section class="arsenal-card">
+            <img src={group.icon} alt="" width="34" height="34" loading="lazy" decoding="async" />
+            <h3>{group.category}</h3>
+            <ul>
+              {group.skills.map((skill) => <li>{skill}</li>)}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </article>
+
+    <article class="command-panel" id="panel-campaigns" data-content-panel="campaigns" hidden>
+      <span class="panel-kicker">Campaigns</span>
+      <h2>Imperial Campaigns</h2>
+      <div class="campaign-list">
+        {campaigns.map((campaign) => (
+          <section class="campaign-chapter">
+            <span>{campaign.chapter}</span>
+            <h3>{campaign.title}</h3>
+            <p>{campaign.text}</p>
+          </section>
+        ))}
+      </div>
+    </article>
+
+    <article class="command-panel" id="panel-conquests" data-content-panel="conquests" hidden>
+      <span class="panel-kicker">Conquests</span>
+      <h2>Great Victories</h2>
+      <div class="conquest-grid">
+        {conquests.map((project, index) => (
+          <section class="conquest-card">
+            <img src={index % 2 === 0 ? '/icons/fortress.svg' : '/icons/imperial-map.svg'} alt="" width="38" height="38" />
+            <span>Imperial Campaign</span>
+            <h3>{project}</h3>
+            <p>Strategic enterprise delivery with scalable architecture, reliable integrations and production-focused execution.</p>
+          </section>
+        ))}
+      </div>
+    </article>
+
+    <article class="command-panel" id="panel-seals" data-content-panel="seals" hidden>
+      <span class="panel-kicker">Seals</span>
+      <h2>Imperial Seals</h2>
+      <div class="seal-grid">
+        {seals.map((seal) => (
+          <section class="seal-card">
+            <img src="/icons/crown.svg" alt="" width="34" height="34" loading="lazy" decoding="async" />
+            <span>{seal}</span>
+          </section>
+        ))}
+      </div>
+    </article>
+
+    <article class="command-panel" id="panel-alliance" data-content-panel="alliance" hidden>
+      <span class="panel-kicker">Alliance</span>
+      <h2>Form an Alliance</h2>
+      <p>Open to senior frontend, technical leadership and enterprise architecture conversations.</p>
+      <div class="alliance-actions">
+        <a class="menu-button" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="menu-button" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="menu-button" href="mailto:contacto@juanpaulo.dev">Email</a>
+        <a class="menu-button" href="/Juan_Paulo_Rubilar_Fontt_CV_2026.pdf" download>Descargar CV</a>
+      </div>
+    </article>
+  </div>
+
+  <aside class="top-hud" aria-label="Profile panel">
     <div class="top-hud__icons" aria-hidden="true">
-      <span>⚙</span>
-      <span>✉</span>
+      <span><img src="/icons/gear.svg" alt="" /></span>
+      <span><img src="/icons/scroll.svg" alt="" /></span>
     </div>
     <div class="top-hud__avatar">JP</div>
     <div class="top-hud__identity">
       <strong>JUAN PAULO RUBILAR FONTT</strong>
-      <span>Architect of Digital Empires</span>
+      <span>Senior Software Engineer</span>
     </div>
-  </div>
+  </aside>
 
-  <article class="campaign-banner" aria-labelledby="menu-title">
-    <p>Featured Campaign</p>
-    <h1 id="menu-title">Auto Allocation Japan</h1>
-    <span>Angular · NestJS · Azure · Microfrontends</span>
+  <article class="campaign-banner" aria-label="Active campaign">
+    <p>Active Campaign</p>
+    <h2>Auto Allocation Japan</h2>
+    <ul>
+      <li>Angular 19</li>
+      <li>Microfrontends</li>
+      <li>Azure</li>
+      <li>NestJS</li>
+      <li>SQL Server</li>
+      <li>Data Science</li>
+    </ul>
   </article>
 
-  <p class="version-label">PORTFOLIO 2026 · SENIOR FRONTEND ENGINEER</p>
+  <p class="version-label">PORTFOLIO 2026 · IMPERIAL CHRONICLE</p>
 </section>
+
+<script>
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-panel]')];
+  const panels = [...document.querySelectorAll<HTMLElement>('[data-content-panel]')];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const openPanel = (panelId: string) => {
+    buttons.forEach((button) => {
+      const active = button.dataset.panel === panelId;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+
+    panels.forEach((panel) => {
+      const active = panel.dataset.contentPanel === panelId;
+      panel.hidden = !active;
+      panel.classList.toggle('is-active', active);
+
+      if (active && !reduceMotion) {
+        panel.animate(
+          [
+            { opacity: 0, transform: 'translateY(12px) scale(0.985)' },
+            { opacity: 1, transform: 'translateY(0) scale(1)' },
+          ],
+          { duration: 260, easing: 'cubic-bezier(.2,.8,.2,1)' },
+        );
+      }
+    });
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (button.dataset.panel) {
+        openPanel(button.dataset.panel);
+      }
+    });
+  });
+</script>
