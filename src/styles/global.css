@@ -334,6 +334,10 @@ svg {
   display: none;
 }
 
+.command-mobile-header {
+  display: none;
+}
+
 .command-panel[hidden] {
   display: none;
 }
@@ -688,7 +692,7 @@ svg {
     min-height: 100dvh;
     padding: 10px;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto 1fr;
+    grid-template-rows: auto;
     gap: 8px;
     overflow: hidden;
   }
@@ -771,70 +775,73 @@ svg {
   }
 
   .top-hud {
-    grid-template-columns: 42px 1fr;
-  }
-
-  .top-hud__avatar {
-    width: 42px;
-    height: 42px;
-  }
-
-  .top-hud__identity {
-    min-height: 42px;
-    padding: 5px 10px;
-  }
-
-  .top-hud__identity strong {
-    font-size: clamp(0.68rem, 2.6vw, 0.86rem);
-  }
-
-  .top-hud__identity span {
-    font-size: clamp(0.66rem, 2.3vw, 0.78rem);
+    display: none;
   }
 
   .campaign-banner {
-    padding: 9px 11px 10px;
-  }
-
-  .campaign-banner h2 {
-    font-size: 1.08rem;
-  }
-
-  .campaign-banner ul {
-    gap: 5px;
-  }
-
-  .campaign-banner li {
-    padding: 3px 6px;
-    font-size: 0.66rem;
+    display: none;
   }
 
   .command-area {
     position: fixed;
-    top: auto;
-    left: auto;
-    inset: 12px;
+    inset: 0;
     z-index: 40;
     display: none;
-    width: auto;
+    width: 100%;
+    height: 100dvh;
     min-height: 0;
     max-width: none;
     transform: none;
-    padding-top: 42px;
+    padding: 12px;
+    border: none;
+    background:
+      radial-gradient(ellipse at top, rgba(201, 162, 39, 0.14), transparent 42%),
+      linear-gradient(180deg, rgba(12, 10, 8, 0.92), rgba(6, 5, 4, 0.95));
+    box-shadow: none;
+    backdrop-filter: blur(10px);
   }
 
   .command-area.is-open {
-    display: block;
+    display: grid;
+    grid-template-rows: 54px 1fr;
+    gap: 10px;
+  }
+
+  .menu-screen.is-detail-open .main-menu,
+  .menu-screen.is-detail-open .top-hud,
+  .menu-screen.is-detail-open .campaign-banner,
+  .menu-screen.is-detail-open .version-label {
+    pointer-events: none;
+  }
+
+  .command-mobile-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid rgba(201, 162, 39, 0.5);
+    background:
+      linear-gradient(90deg, rgba(245, 210, 102, 0.1), transparent 18%, transparent 82%, rgba(245, 210, 102, 0.1)),
+      rgba(16, 12, 9, 0.78);
+    box-shadow:
+      inset 0 0 22px rgba(0, 0, 0, 0.72),
+      0 12px 30px rgba(0, 0, 0, 0.34);
+    padding: 6px 8px;
+  }
+
+  .command-mobile-header img {
+    width: 148px;
+    height: 42px;
+    object-fit: contain;
+    object-position: left center;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 62%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, black 62%, transparent 100%);
   }
 
   .command-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
     display: grid;
-    min-width: 92px;
-    min-height: 32px;
+    min-width: 86px;
+    min-height: 34px;
     place-items: center;
     border: 1px solid rgba(9, 6, 4, 0.96);
     outline: 1px solid rgba(201, 162, 39, 0.72);
@@ -853,14 +860,19 @@ svg {
   }
 
   .command-panel {
-    position: absolute;
-    inset: 42px 0 0;
-    width: 100%;
+    position: relative;
+    inset: auto;
+    width: auto;
+    height: 100%;
     min-height: 0;
-    max-height: calc(100dvh - 66px);
+    max-height: none;
     overflow: auto;
     padding: 18px;
     -webkit-overflow-scrolling: touch;
+    border-color: rgba(201, 162, 39, 0.62);
+    background:
+      linear-gradient(90deg, rgba(245, 210, 102, 0.12), transparent 10%, transparent 90%, rgba(245, 210, 102, 0.12)),
+      linear-gradient(180deg, rgba(28, 23, 18, 0.94), rgba(8, 8, 7, 0.9));
   }
 
   .command-panel h1,
@@ -876,14 +888,6 @@ svg {
   .command-panel p {
     font-size: 0.84rem;
     line-height: 1.45;
-  }
-
-  .top-hud {
-    grid-template-columns: 52px 1fr;
-  }
-
-  .top-hud__icons {
-    display: none;
   }
 
   .arsenal-grid,
@@ -909,5 +913,61 @@ svg {
 
   .version-label {
     display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .menu-screen {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .main-menu {
+    padding: 7px;
+  }
+
+  .main-menu__logo {
+    height: 52px;
+    max-width: 190px;
+    margin-bottom: 6px;
+  }
+
+  .menu-tiles {
+    gap: 5px;
+  }
+
+  .menu-tile,
+  .menu-tile:nth-child(1),
+  .menu-tile:nth-child(3),
+  .menu-tile:nth-child(4) {
+    grid-template-rows: 38px 21px;
+    min-height: 59px;
+  }
+
+  .secondary-menu {
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .top-hud__avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .top-hud {
+    grid-template-columns: 38px 1fr;
+  }
+
+  .campaign-banner {
+    padding: 8px 10px;
+  }
+
+  .campaign-banner h2 {
+    margin-bottom: 7px;
+    font-size: 1rem;
+  }
+
+  .campaign-banner li {
+    font-size: 0.62rem;
   }
 }
